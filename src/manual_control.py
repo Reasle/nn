@@ -200,11 +200,14 @@ def get_actor_blueprints(world, filter, generation):
 
 class World(object):
     def __init__(self, carla_world, hud, args):
-        self.world = carla_world
-        self.sync = args.sync
-        self.actor_role_name = args.rolename
+        # 初始化 Carla 世界对象
+        self.world = carla_world# Carla 世界实例，用于与 Carla 模拟环境交互
+        self.sync = args.sync# 是否启用同步模式，用于控制模拟的同步性
+        self.actor_role_name = args.rolename# 演员角色名称，用于标识车辆或其他模拟对象
+        
+        # 尝试获取地图信息
         try:
-            self.map = self.world.get_map()
+            self.map = self.world.get_map()# 获取当前地图
         except RuntimeError as error:
             print('RuntimeError: {}'.format(error))
             print('  The server could not send the OpenDRIVE (.xodr) file:')
