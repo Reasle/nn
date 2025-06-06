@@ -13,13 +13,13 @@ from tensorflow.keras import optimizers, layers, Model
 
 def identity_basis(x):
     """恒等基函数"""
-    return np.expand_dims(x, axis=1)
+    return np.expand_dims(x, axis=1)#增加维度使其成为(N,1)形状
 
 
 def multinomial_basis(x, feature_num=10):
     """多项式基函数"""
-    x = np.expand_dims(x, axis=1) # shape(N, 1)
-    feat = [x]
+    x = np.expand_dims(x, axis=1) # shape(N, 1)#shape(N,1)
+    feat = [x]#包含原始特征
     for i in range(2, feature_num+1):
         feat.append(x**i)
     ret = np.concatenate(feat, axis=1)
@@ -60,7 +60,7 @@ def load_data(filename, basis_func=gaussian_basis):
 
 class linearModel(Model):
     def __init__(self, ndim):
-        super(linearModel, self).__init__()
+        super(linearModel, self).__init__()#初始化权重参数
         self.w = tf.Variable(
             shape=[ndim, 1], 
             initial_value=tf.random.uniform(
