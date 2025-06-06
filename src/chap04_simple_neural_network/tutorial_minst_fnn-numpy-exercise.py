@@ -30,10 +30,22 @@ def mnist_dataset():
 import numpy as np
 
 class Matmul:
+    """
+    矩阵乘法层（前向传播和反向传播）
+    实现 Y = X·W 的线性变换及其梯度计算
+    """
     def __init__(self):
         self.mem = {}
         
     def forward(self, x, W):
+        """
+        前向传播：计算矩阵乘法
+        参数：
+            x: 输入矩阵，形状(N, d) 
+            W: 权重矩阵，形状(d, d')
+        返回：
+            h: 输出矩阵，形状(N, d')
+        """
         h = np.matmul(x, W)
         self.mem={'x': x, 'W':W}
         return h
