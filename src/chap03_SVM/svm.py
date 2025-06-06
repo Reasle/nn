@@ -12,9 +12,9 @@ def load_data(fname):
         data = []
         line = f.readline() # 首行是标题行，自动跳过
         for line in f:
-            line = line.strip().split()
-            x1 = float(line[0])
-            x2 = float(line[1])
+            line = line.strip().split()# 去除首尾空格并按空格分割
+            x1 = float(line[0])# 第一个特征
+            x2 = float(line[1])# 第二个特征
             t = int(line[2])
             data.append([x1, x2, t])
         return np.array(data)
