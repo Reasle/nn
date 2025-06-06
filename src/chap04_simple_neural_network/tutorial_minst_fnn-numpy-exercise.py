@@ -79,15 +79,15 @@ class Softmax:
     softmax over last dimention
     '''
     def __init__(self):
-        self.epsilon = 1e-12
-        self.mem = {}
+        self.epsilon = 1e-12#防止除零的小常数
+        self.mem = {}#存储前向传播的中间结果用于反向传播
         
     def forward(self, x):
         '''
         x: shape(N, c)
-        '''
-        x_exp = np.exp(x)
-        partition = np.sum(x_exp, axis=1, keepdims=True)
+        '''#计算指数并归一化
+        x_exp = np.exp(x)#对输入逐元素取指数
+        partition = np.sum(x_exp, axis=1, keepdims=True)#计算每行求和（保持维度）
         out = x_exp/(partition+self.epsilon)
         
         self.mem['out'] = out
