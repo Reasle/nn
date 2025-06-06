@@ -68,6 +68,7 @@ class mySeq2SeqModel(keras.Model):
                                            return_sequences=True, return_state=True)
         self.decoder = tf.keras.layers.RNN(self.decoder_cell, 
                                            return_sequences=True, return_state=True)
+        # 注意力机制和输出层
         self.dense_attn = tf.keras.layers.Dense(self.hidden)
         self.dense = tf.keras.layers.Dense(self.v_sz)
         
