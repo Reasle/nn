@@ -15,21 +15,22 @@ from tensorflow import keras
 from tensorflow.keras import layers
 from tensorflow.keras import layers, optimizers, datasets
 
-start_token = 'bos'
-end_token = 'eos'
+start_token = 'bos'# 开始标记
+end_token = 'eos'# 结束标记
 
+# 处理诗歌数据集，生成索引化样本和词表
 def process_dataset(fileName):
     examples = []
     with open(fileName, 'r') as fd:
         for line in fd:
-            outs = line.strip().split(':')
-            content = ''.join(outs[1:])
-            ins = [start_token] + list(content) + [end_token] 
-            if len(ins) > 200:
+            outs = line.strip().split(':')# 分割标题和内容
+            content = ''.join(outs[1:])# 提取诗歌内容
+            ins = [start_token] + list(content) + [end_token]# 添加开始和结束标记 
+            if len(ins) > 200:# 过滤过长的诗歌
                 continue
             examples.append(ins)
             
-    counter = collections.Counter()
+    counter = collections.Counter()# 统计词频
     for e in examples:
         for w in e:
             counter[w] += 1
