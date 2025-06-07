@@ -155,6 +155,7 @@ class mySeq2SeqModel(keras.Model):
         context = tf.reduce_sum(enc_out * tf.expand_dims(attn_weights, -1), axis=1)  # (B, H)
     
         rnn_input = tf.concat([x_embed, context], axis=-1)  # (B, E+H)
+        # 对于SimpleRNNCell，状态是单个张量
         output, new_state = self.decoder_cell(rnn_input, [state])  # SimpleRNNCell返回单个状态
         logits = self.dense(output)  # (B, V)
         next_token = tf.argmax(logits, axis=-1, output_type=tf.int32)  # (B,)
