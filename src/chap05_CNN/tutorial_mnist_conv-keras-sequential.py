@@ -60,6 +60,7 @@ def prepare_mnist_features_and_labels(x, y):
 # ## 建立模型
 
 # In[3]:
+# 构建CNN模型架构
 model = keras.Sequential([
     Conv2D(32, (5, 5), activation='relu', padding='same'),
     MaxPooling2D(pool_size=2, strides=2),
