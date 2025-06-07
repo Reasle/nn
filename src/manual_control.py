@@ -332,6 +332,11 @@ class World(object):
         self.hud.notification('LayerMap selected: %s' % selected)
 
     def load_map_layer(self, unload=False):
+    """加载或卸载指定的地图图层
+    
+    Args:
+        unload: 布尔值，True表示卸载图层，False表示加载图层
+    """
         selected = self.map_layer_names[self.current_map_layer]
         if unload:
             self.hud.notification('Unloading map layer: %s' % selected)
