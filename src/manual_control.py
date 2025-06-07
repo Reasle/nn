@@ -352,6 +352,16 @@ class World(object):
             self.radar_sensor = None
 
     def modify_vehicle_physics(self, actor):
+    """
+    修改车辆的物理控制参数以优化车轮碰撞检测
+    
+    参数:
+        actor: 要修改物理参数的CARLA actor
+    
+    注意:
+        如果actor不是车辆类型，函数会静默处理异常
+        仅对车辆使用此函数，否则会触发异常
+    """
         #If actor is not a vehicle, we cannot use the physics control
         try:
             physics_control = actor.get_physics_control()
