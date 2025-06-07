@@ -240,6 +240,7 @@ x = np.random.normal(size = [5, 6])  # 5个样本，每个样本6维特征
 W1 = np.random.normal(size = [6, 5]) # 第一层权重 (6→5)
 W2 = np.random.normal(size = [5, 6]) # 第二层权重 (5→6)
 
+# 定义神经网络层组件
 mul_h1 = Matmul() # 第一层矩阵乘法
 mul_h2 = Matmul() # 第二层矩阵乘法
 relu = Relu() # ReLU激活函数
