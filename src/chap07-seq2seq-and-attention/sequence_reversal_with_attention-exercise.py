@@ -63,11 +63,13 @@ class mySeq2SeqModel(keras.Model):
         
         self.encoder_cell = tf.keras.layers.SimpleRNNCell(self.hidden) # 隐藏状态的维度，即输出维度
         self.decoder_cell = tf.keras.layers.SimpleRNNCell(self.hidden)
-        
+        # 编码器RNN层，返回所有时间步的输出序列和最终状态
         self.encoder = tf.keras.layers.RNN(self.encoder_cell, 
                                            return_sequences=True, return_state=True)
+        # 解码器RNN层，返回所有时间步的输出序列和最终状态
         self.decoder = tf.keras.layers.RNN(self.decoder_cell, 
                                            return_sequences=True, return_state=True)
+        # 注意力机制的全连接层，用于计算注意力得分
         self.dense_attn = tf.keras.layers.Dense(self.hidden)
         self.dense = tf.keras.layers.Dense(self.v_sz)
         
