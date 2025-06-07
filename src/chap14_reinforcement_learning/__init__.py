@@ -2,7 +2,7 @@ from gym.envs.registration import registry, register, make, spec
 
 # Algorithmic
 # ----------------------------------------
-
+# 复制任务：智能体需要学习复制输入序列
 register(
     id = 'Copy-v0',
     entry_point = 'gym.envs.algorithmic:CopyEnv',
@@ -14,7 +14,7 @@ register(
     id = 'RepeatCopy-v0',
     entry_point = 'gym.envs.algorithmic:RepeatCopyEnv',
     max_episode_steps = 200,
-    reward_threshold = 75.0,
+    reward_threshold = 75.0,# 由于任务更复杂，奖励阈值更高
 )
 
 
