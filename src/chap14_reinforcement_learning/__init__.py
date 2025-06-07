@@ -6,8 +6,8 @@ from gym.envs.registration import registry, register, make, spec
 register(
     id = 'Copy-v0',
     entry_point = 'gym.envs.algorithmic:CopyEnv',
-    max_episode_steps = 200,
-    reward_threshold = 25.0,
+    max_episode_steps = 200,# 最大时间步长，防止无限循环
+    reward_threshold = 25.0,# 达到此奖励阈值视为任务解决
 )
 
 register(
