@@ -56,7 +56,8 @@ class Matmul:
         '''计算矩阵乘法的对应的梯度'''
         grad_x = np.matmul(grad_y, W.T)
         grad_W = np.matmul(x.T, grad_y)    #执行矩形乘法运算，计算梯度
-      
+        
+        # 返回计算得到的梯度
         return grad_x, grad_W
 
 # 定义 ReLU 激活层
