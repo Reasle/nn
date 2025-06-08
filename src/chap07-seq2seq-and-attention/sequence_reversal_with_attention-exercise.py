@@ -254,7 +254,7 @@ def is_reverse(seq, rev_seq):# 将待检测序列反转（使用列表推导式+
         return True
     else:
         return False
-
+# 测试函数功能
 print([is_reverse(*item) for item in list(zip(*sequence_reversal()))])
 print(list(zip(*sequence_reversal())))
 
