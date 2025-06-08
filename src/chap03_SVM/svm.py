@@ -77,11 +77,11 @@ if __name__ == '__main__':
     svm.train(data_train)  # 训练模型
 
     # 使用SVM模型预测标签
-    x_train = data_train[:, :2]  # feature [x1, x2]
-    t_train = data_train[:, 2]   # 真实标签
+    x_train = data_train[:, :2]             # feature [x1, x2]
+    t_train = data_train[:, 2]              # 真实标签
     t_train_pred = svm.predict(x_train)     # 预测标签
-    x_test = data_test[:, :2]
-    t_test = data_test[:, 2]
+    x_test = data_test[:, :2]               # 提取测试数据的特征部分，shape为(M, 2)
+    t_test = data_test[:, 2]                # 提取测试数据的真实标签，shape为(M,)
     t_test_pred = svm.predict(x_test)
 
     # 评估结果，计算准确率
