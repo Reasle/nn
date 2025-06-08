@@ -135,7 +135,7 @@ class mySeq2SeqModel(keras.Model):
         '''
         x_embed = self.embed_layer(x)  # (B, E)
 
-        # Attention 权重计算
+        # Attention 权重计算-基于当前解码器状态对编码器输出进行加权
         score = tf.nn.tanh(self.dense_attn(enc_out))  # (B, T1, H)
         score = tf.reduce_sum(score * tf.expand_dims(state, 1), axis=-1)  # (B, T1)
         attn_weights = tf.nn.softmax(score, axis=-1)  # (B, T1)
