@@ -57,8 +57,7 @@ def prepare_mnist_features_and_labels(x, y):
 7 * 7 * 64
 
 
-# ## 建立模型
-
+# 创建一个基于Keras Sequential API的卷积神经网络模型
 # In[3]:
 model = keras.Sequential([
     Conv2D(32, (5, 5), activation='relu', padding='same'),
