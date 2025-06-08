@@ -144,6 +144,7 @@ def test(model, x, y):
 
 # In[14]:
 
+# 加载MNIST数据集，返回训练集和测试集
 train_data, test_data = mnist_dataset()
 for epoch in range(50):
     loss, accuracy = train_one_step(
