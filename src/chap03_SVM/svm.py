@@ -67,10 +67,10 @@ class SVM():
 
 if __name__ == '__main__':
     # 载入数据，实际实用时将x替换为具体名称
-    train_file = 'data/train_linear.txt'
-    test_file = 'data/test_linear.txt'
+    train_file = 'data/train_linear.txt'   # 训练数据文件路径
+    test_file = 'data/test_linear.txt'     # 测试数据文件路径
     data_train = load_data(train_file)     # 数据格式[x1, x2, t]
-    data_test = load_data(test_file)
+    data_test = load_data(test_file)       # 加载测试数据，格式与训练数据一致
 
     # 使用训练集训练SVM模型
     svm = SVM()            # 初始化模型
