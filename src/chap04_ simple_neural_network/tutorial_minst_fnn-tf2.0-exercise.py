@@ -74,7 +74,7 @@ def compute_loss(logits, labels):
         )
     )
 
-
+# 使用TensorFlow图模式加速计算的准确率函数
 @tf.function
 def compute_accuracy(logits, labels):
     predictions = tf.argmax(logits, axis=1)
