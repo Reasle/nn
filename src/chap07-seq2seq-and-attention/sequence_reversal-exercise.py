@@ -153,7 +153,7 @@ class mySeq2SeqModel(keras.Model):
         score = tf.reduce_sum(score * tf.expand_dims(state, 1), axis=-1)  # (B, T1)
         attn_weights = tf.nn.softmax(score, axis=-1)  # (B, T1)
         context = tf.reduce_sum(enc_out * tf.expand_dims(attn_weights, -1), axis=1)  # (B, H)
-    
+    # 合并上下文向量和输入嵌入
         rnn_input = tf.concat([x_embed, context], axis=-1)  # (B, E+H)
         output, new_state = self.decoder_cell(rnn_input, [state])  # SimpleRNNCell返回单个状态
         logits = self.dense(output)  # (B, V)
