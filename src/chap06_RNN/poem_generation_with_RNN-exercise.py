@@ -222,7 +222,9 @@ def reduce_avg(reduce_target, lengths, dim):
     mxlen = tf.shape(reduce_target)[dim]
     mask = mkMask(lengths, mxlen)
     if rank_diff!=0:
+        # 在长度张量后面添加1的维度，使其与目标张量的维度匹配
         len_shape = tf.concat(axis=0, values=[tf.shape(lengths), [1]*rank_diff])
+        # 同样调整掩码的形状
         mask_shape = tf.concat(axis=0, values=[tf.shape(mask), [1]*rank_diff])
     else:
         len_shape = tf.shape(lengths)
